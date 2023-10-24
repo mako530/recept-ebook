@@ -16,7 +16,7 @@ Follow these steps to set up and run the Laravel application on your local envir
 1. Clone the repository:
 
    ```shell
-   git clone https://github.com/your-repo-url.git
+   git clone https://github.com/mako530/recept-ebook.git
    cd your-laravel-app
    ```
 2. Copy the example environment file and edit the database password. You can use a text editor or a command-line tool to make these changes. Add a DB_PASSWORD.
