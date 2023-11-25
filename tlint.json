@@ -1,0 +1,27 @@
+{
+    "preset": "laravel",
+    "excluded": ["tests/"],
+    "paths": [
+        {
+            "controllers": ["app/Http/Controllers"],
+            "models": ["app/Models"],
+            "views": ["resources/views"],
+            "routes": ["routes/web.php", "routes/api.php"],
+            "migrations": ["database/migrations"],
+            "seeds": ["database/seeds"],
+            "factory": ["database/factories"],
+            "exceptions": ["app/Exceptions"],
+            "mails": ["app/Mail"],
+            "notifications": ["app/Notifications"],
+            "resource": ["app/Http/Resources"],
+            "requests": ["app/Http/Requests"],
+            "jobs": ["app/Jobs"],
+            "events": ["app/Events"],
+            "listeners": ["app/Listeners"],
+            "policies": ["app/Policies"],
+            "rules": ["app/Rules"],
+            "providers": ["app/Providers"],
+            "helpers": ["app/Helpers"]
+        }
+    ]
+}
