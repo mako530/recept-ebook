@@ -4,10 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Sluggable\HasSlug;
+use Spatie\Sluggable\SlugOptions;
 
 class RecipeCategory extends Model
 {
-    use HasFactory;
+    use HasFactory, HasSlug;
 
     protected $table = 'recipe_categories';
 
@@ -18,6 +20,13 @@ class RecipeCategory extends Model
         'image',
     ];
 
+    public function getSlugOptions(): SlugOptions
+    {
+        return SlugOptions::create()
+            ->generateSlugsFrom('name')
+            ->saveSlugsTo('slug');
+    }
+
     public function recipes(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(Recipe::class);
@@ -25,7 +34,7 @@ class RecipeCategory extends Model
 
     public function getFullImagePathAttribute(): string
     {
-        return asset('storage/'.$this->image);
+        return asset('img/'.$this->image);
     }
 
     public function getRouteKeyName(): string

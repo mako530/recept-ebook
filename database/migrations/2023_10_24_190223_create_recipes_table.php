@@ -21,7 +21,7 @@ return new class extends Migration
             $table->json('tags')->nullable();
             $table->string('image', 100)->nullable();
             $table->boolean('is_published')->default(false);
-            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
+            $table->foreignId('user_id')->nullable()->constrained('users')->cascadeOnDelete();
             $table->foreignId('recipe_category_id')->constrained('recipe_categories')->cascadeOnDelete();
             $table->timestamps();
         });

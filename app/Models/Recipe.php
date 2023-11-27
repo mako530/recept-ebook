@@ -4,10 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Sluggable\HasSlug;
+use Spatie\Sluggable\SlugOptions;
 
 class Recipe extends Model
 {
-    use HasFactory;
+    use HasFactory, HasSlug;
 
     protected $table = 'recipes';
 
@@ -21,13 +23,22 @@ class Recipe extends Model
         'image',
         'is_published',
         'user_id',
+        'recipe_category_id',
     ];
 
     protected $casts = [
         'user_id' => 'integer',
+        'recipe_category_id' => 'integer',
         'tags' => 'array',
         'is_published' => 'boolean',
     ];
+
+    public function getSlugOptions(): SlugOptions
+    {
+        return SlugOptions::create()
+            ->generateSlugsFrom('title')
+            ->saveSlugsTo('slug');
+    }
 
     public function user(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
@@ -36,7 +47,7 @@ class Recipe extends Model
 
     public function category(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
-        return $this->belongsTo(RecipeCategory::class);
+        return $this->belongsTo(RecipeCategory::class, 'recipe_category_id', 'id');
     }
 
     public function ratings(): \Illuminate\Database\Eloquent\Relations\HasMany
@@ -52,6 +63,11 @@ class Recipe extends Model
     public function getFullImagePathAttribute(): string
     {
         return asset('storage/'.$this->image);
+    }
+
+    public function getAvgRatingAttribute(): float
+    {
+        return $this->ratings()->avg('rating');
     }
 
     public function getRouteKeyName(): string
