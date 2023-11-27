@@ -14,6 +14,11 @@ class RecipePolicy
         //
     }
 
+    public function show(?User $user, \App\Models\Recipe $recipe): bool
+    {
+        return ($user && $user->id === $recipe->user_id) || $recipe->is_published;
+    }
+
     public function update(User $user, \App\Models\Recipe $recipe): bool
     {
         return $user->id === $recipe->user_id;

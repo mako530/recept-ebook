@@ -16,7 +16,7 @@
     <section class="best-receipe-area">
         <div class="container">
             <div class="row">
-                @forelse ($category->recipes as $recipe)
+                @forelse ($recipes as $recipe)
                     <div class="col-12 col-sm-6 col-lg-4">
                         <div class="single-best-receipe-area mb-30">
                             @if($recipe->image)

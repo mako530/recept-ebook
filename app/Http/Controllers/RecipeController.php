@@ -7,9 +7,9 @@ use Illuminate\Http\Request;
 
 class RecipeController extends Controller
 {
-    public function show(Recipe $recipe)
+    public function show(Request $request, Recipe $recipe)
     {
-        if ($recipe->is_published === false && auth()->check() && auth()->id() !== $recipe->user_id) {
+        if ($request->user()->cannot('show', $recipe)) {
             return redirect()->route('home');
         }
 
