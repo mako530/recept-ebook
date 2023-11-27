@@ -7,11 +7,6 @@ services:
     volumes:
       - ./:/var/www/html
     working_dir: /var/www/html
-    environment:
-      - DB_HOST=${DB_HOST}
-      - DB_DATABASE=${DB_DATABASE}
-      - DB_USERNAME=${DB_USERNAME}
-      - DB_PASSWORD=${DB_PASSWORD}
     networks:
       - recept-ebook-net
 
@@ -20,9 +15,12 @@ services:
     container_name: recept-ebook-mysql
     environment:
       - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
+      - MYSQL_ALLOW_EMPTY_PASSWORD=true
+      - MYSQL_USER=${DB_USERNAME}
+      - MYSQL_PASSWORD=${DB_PASSWORD}
       - MYSQL_DATABASE=${DB_DATABASE}
     volumes:
-      - recept-ebook-mysql-data:/var/lib/mysql
+      - ./mysql_data:/var/lib/mysql
     networks:
       - recept-ebook-net
 
@@ -58,12 +56,10 @@ services:
      environment:
        - DOCUMENT_ROOT=/var/www/html/public
        - CLIENT_MAX_BODY_SIZE=20M
-       - PHP_FPM_HOST=recept-ebook-app:9000 
+       - PHP_FPM_HOST=recept-ebook-app:9000
      networks:
       - recept-ebook-net
 networks:
   recept-ebook-net:
-    driver: bridge
+      driver: bridge
 
-volumes:
-  recept-ebook-mysql-data:

@@ -13,13 +13,16 @@ return new class extends Migration
     {
         Schema::create('recipes', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->text('excrept');
-            $table->longText('content');
-            
-            $table->foreignId('user_id')
-                    ->constrained('users')
-                    ->cascadeOnDelete();
+            $table->string('title', 100);
+            $table->string('slug', 100)->unique();
+            $table->text('description');
+            $table->text('ingredients');
+            $table->text('instructions');
+            $table->json('tags')->nullable();
+            $table->string('image', 100)->nullable();
+            $table->boolean('is_published')->default(false);
+            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
+            $table->foreignId('recipe_category_id')->constrained('recipe_categories')->cascadeOnDelete();
             $table->timestamps();
         });
     }

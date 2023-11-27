@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('recipe_galleries', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('recipe_id')->constrained('recipes')->cascadeOnDelete();
+            $table->string('image', 300);
+            $table->boolean('is_published')->default(false);
+            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
             $table->timestamps();
         });
     }
