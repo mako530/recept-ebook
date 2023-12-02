@@ -13,7 +13,7 @@
         </div>
     </div>
 
-    <section class="best-receipe-area">
+    <section class="best-receipe-area mt-5">
         <div class="container">
             <div class="row">
                 @forelse ($recipes as $recipe)
