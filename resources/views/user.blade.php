@@ -21,7 +21,7 @@
                     <div class="col-12 col-sm-6 col-lg-4" id="recipe-{{$recipe->id}}">
                         <div class="single-best-receipe-area mb-30">
                             @if($recipe->image)
-                                <img src="{{ $recipe->fullImagePath }}" alt="{{ $recipe->title }}">
+                                <img src="{{ $recipe->fullImagePath }}" alt="{{ $recipe->title }}" style="height:250px">
                             @endif
                             <div class="recipe-content">
                                 <a href="{{ route('recipe.edit', $recipe) }}">

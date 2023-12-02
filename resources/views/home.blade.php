@@ -3,7 +3,7 @@
 @section('content')
     @if (!empty($topRecipes))
         <section class="hero-area">
-            <div class="hero-slides owl-carousel">
+            <div class="hero-slides owl-carousel" >
                 @foreach ($topRecipes as $recipe)
                     <div class="single-hero-slide bg-img" style="background-image: url('{{ $recipe->fullImagePath }}');">
                         <div class="container h-100">
@@ -23,7 +23,7 @@
         </section>
     @endif
 
-    <section class="best-receipe-area">
+    <section class="best-receipe-area" >
         <div class="container">
             <div class="row">
                 <div class="col-12">

@@ -20,7 +20,7 @@
                     <div class="col-12 col-sm-6 col-lg-4">
                         <div class="single-best-receipe-area mb-30">
                             @if($recipe->image)
-                                <img src="{{ $recipe->fullImagePath }}" alt="{{ $recipe->title }}">
+                                <img src="{{ $recipe->fullImagePath }}" alt="{{ $recipe->title }}" style="height:250px">
                             @endif
                             <div class="receipe-content">
                                 <a href="{{ route('recipe.show', $recipe) }}">
