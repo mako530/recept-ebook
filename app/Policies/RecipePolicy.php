@@ -38,4 +38,9 @@ class RecipePolicy
     {
         return $user->id !== $recipe->user_id;
     }
+
+    public function destroy(User $user, \App\Models\Recipe $recipe): bool
+    {
+        return $user->id === $recipe->user_id;
+    }
 }

@@ -63,7 +63,13 @@ class RecipeController extends Controller
             return redirect()->route('home');
         }
 
-        $recipe->update($request->validated());
+        $validated = $request->validated();
+
+        if($request->hasFile('image')) {
+            $validated['image'] = $request->file('image')->store('recipes', 'public');
+        }
+
+        $recipe->update($validated);
 
         return redirect()->route('recipe.show', $recipe);
     }

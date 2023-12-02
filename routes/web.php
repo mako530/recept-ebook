@@ -30,6 +30,6 @@ Route::get('recept', [\App\Http\Controllers\RecipeController::class, 'create'])-
 Route::post('recept', [\App\Http\Controllers\RecipeController::class, 'store'])->middleware('auth')->name('recipe.store');
 Route::get('recept/{recipe}/szerkesztes', [\App\Http\Controllers\RecipeController::class, 'edit'])->middleware('auth')->name('recipe.edit');
 Route::post('recept/{recipe}/szerkesztes', [\App\Http\Controllers\RecipeController::class, 'update'])->middleware('auth')->name('recipe.update');
-Route::post('recept/{recipe}/torles', [\App\Http\Controllers\RecipeController::class, 'destroy'])->middleware('auth')->name('recipe.destroy');
+Route::post('recept/{recipe:id}/torles', [\App\Http\Controllers\RecipeController::class, 'destroy'])->middleware('auth')->name('recipe.destroy');
 
 Route::get('profil/', [\App\Http\Controllers\UserController::class, 'show'])->name('user.show');

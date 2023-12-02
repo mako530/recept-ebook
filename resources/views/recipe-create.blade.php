@@ -80,6 +80,7 @@
 
                 <div class="mt-5 form-group">
                     <label for="image">Kép</label>
+                    <img alt="Előnézet" id="image_preview" class="img-fluid" style="display: none" />
                     <input class="form-control @error('title') is-invalid @enderror" type="file" name="image" id="image" accept="image/" />
                     @error('image')
                         <div class="invalid-feedback">
@@ -94,4 +95,24 @@
             </form>
         </div>
     </section>
+
+    <script>
+        //if image input changes then show the image
+        const imagePreview = document.getElementById('image_preview');
+        const imageInput = document.querySelector('input[name="image"]');
+
+        if(imageInput) {
+            imageInput.addEventListener('change', function() {
+                const file = this.files[0];
+                if(file) {
+                    imagePreview.style.display = 'block';
+                    const reader = new FileReader();
+                    reader.addEventListener('load', function() {
+                        imagePreview.setAttribute('src', this.result);
+                    });
+                    reader.readAsDataURL(file);
+                }
+            });
+        }
+    </script>
 @endsection

@@ -3,7 +3,7 @@
 @section('content')
     <section class="best-receipe-area">
         <div class="container">
-            <form action="{{ route('recipe.store') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('recipe.update') }}" method="POST" enctype="multipart/form-data">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <div class="">
                     <div class="section-heading style-2">
@@ -81,7 +81,7 @@
                 <div class="mt-5 form-group">
                     <label for="image">Kép</label>
                     @if($recipe->image)
-                        <img src="{{ $recipe->fullImagePath }}" alt="{{ $recipe->title }}" class="img-fluid" />
+                        <img src="{{ $recipe->fullImagePath }}" alt="{{ $recipe->title }} előnézet" id="image_preview" class="img-fluid" />
                     @endif
 
                     <input class="form-control @error('title') is-invalid @enderror" type="file" name="image" id="image" accept="image/" />
@@ -93,9 +93,28 @@
                 </div>
 
                 <div class="mt-5 ">
-                    <button type="submit" class="btn delicious-btn">Hozzáadás</button>
+                    <button type="submit" class="btn delicious-btn">Szerkesztés</button>
                 </div>
             </form>
         </div>
     </section>
+
+    <script>
+        //if image input changes then show the image
+        const imagePreview = document.getElementById('image_preview');
+        const imageInput = document.querySelector('input[name="image"]');
+
+        if(imageInput) {
+            imageInput.addEventListener('change', function() {
+                const file = this.files[0];
+                if(file) {
+                    const reader = new FileReader();
+                    reader.addEventListener('load', function() {
+                        imagePreview.setAttribute('src', this.result);
+                    });
+                    reader.readAsDataURL(file);
+                }
+            });
+        }
+    </script>
 @endsection
