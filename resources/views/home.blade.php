@@ -12,7 +12,7 @@
                                     <div class="hero-slides-content" data-animation="fadeInUp" data-delay="100ms">
                                         <h2 data-animation="fadeInUp" data-delay="300ms">{{ $recipe->title }}</h2>
                                         <p data-animation="fadeInUp" data-delay="700ms">{{ $recipe->description }}</p>
-                                        <a href="#" class="btn delicious-btn" data-animation="fadeInUp" data-delay="1000ms">Megnézem</a>
+                                        <a href="{{ route('recipe.show',$recipe) }}" class="btn delicious-btn" data-animation="fadeInUp" data-delay="1000ms">Megnézem</a>
                                     </div>
                                 </div>
                             </div>
