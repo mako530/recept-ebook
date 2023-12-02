@@ -3,7 +3,7 @@
 @section('content')
     <section class="best-receipe-area">
         <div class="container">
-            <form action="{{ route('recipe.store') }}" method="post">
+            <form action="{{ route('recipe.store') }}" method="POST" enctype="multipart/form-data">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <div class="">
                     <div class="section-heading style-2">
