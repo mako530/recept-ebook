@@ -9,7 +9,7 @@ class RecipeController extends Controller
 {
     public function show(Request $request, Recipe $recipe)
     {
-        if ($request->user()->cannot('show', $recipe)) {
+        if ($request->user() && $request->user()->cannot('show', $recipe)) {
             return redirect()->route('home');
         }
 

@@ -22,21 +22,6 @@
         <img src="{{ asset('/img/core-img/salad.png') }}" alt="Saláta">
     </div>
 
-    <!-- Search Wrapper -->
-    <div class="search-wrapper">
-        <div class="close-btn"><i class="fa fa-times" aria-hidden="true"></i></div>
-
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <form action="#" method="post">
-                        <input type="search" name="search" placeholder="Type any keywords...">
-                        <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <!-- ##### Header Area Start ##### -->
     <header class="header-area">
@@ -85,10 +70,7 @@
 
                                 </ul>
 
-                                <!-- Newsletter Form -->
-                                <div class="search-btn">
-                                    <i class="fa fa-search" aria-hidden="true"></i>
-                                </div>
+
 
                             </div>
                             <!-- Nav End -->
